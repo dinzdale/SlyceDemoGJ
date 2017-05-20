@@ -60,8 +60,8 @@ public class CameraActivity extends AppCompatActivity implements OnSlyceCameraFr
         // Load results fragment
         getFragmentManager()
                 .beginTransaction()
-                .addToBackStack(ResultsFragment.class.getName())
                 .replace(R.id.fragment_container,ResultsFragment.getInstance(jsonObject.toString()))
+                .addToBackStack(ResultsFragment.class.getName())
                 .commit();
 
     }
