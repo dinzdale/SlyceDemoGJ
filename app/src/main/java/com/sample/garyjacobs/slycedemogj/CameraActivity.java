@@ -57,7 +57,11 @@ public class CameraActivity extends AppCompatActivity implements OnSlyceCameraFr
     @Override
     public void onCameraFragmentResultsReceived(JSONObject jsonObject) {
 
-        Toast.makeText(this, "onCameraFragmentResultsReceived", Toast.LENGTH_LONG).show();
+        getFragmentManager()
+                .beginTransaction()
+                .addToBackStack(ResultsFragment.class.getName())
+                .replace(R.id.fragment_container,ResultsFragment.getInstance(jsonObject.toString()))
+                .commit();
 
     }
 
