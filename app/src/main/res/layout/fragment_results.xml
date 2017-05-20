@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="horizontal">
+
+    <ProgressBar
+        android:id="@+id/progressBar"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:visibility="visible" />
+
+
+    <LinearLayout
+        android:id="@+id/source_image_container"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/slyce_color_blue"
+        android:orientation="horizontal">
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <ImageView
+                android:id="@+id/source_image"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent" />
+        </FrameLayout>
+
+        <FrameLayout
+            android:id="@+id/ProductListFrame"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/slyce_color_blue"
+            android:paddingBottom="@dimen/slyce_dimen_50dp"
+            android:paddingLeft="@dimen/slyce_dimen_30dp"
+            android:paddingRight="@dimen/slyce_dimen_30dp"
+            android:paddingTop="@dimen/slyce_dimen_50dp">
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/results_list"
+                yout_height="match_parent"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+        </FrameLayout>
+
+    </LinearLayout>
+</FrameLayout>

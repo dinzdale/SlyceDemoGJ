@@ -57,6 +57,7 @@ public class CameraActivity extends AppCompatActivity implements OnSlyceCameraFr
     @Override
     public void onCameraFragmentResultsReceived(JSONObject jsonObject) {
 
+        // Load results fragment
         getFragmentManager()
                 .beginTransaction()
                 .addToBackStack(ResultsFragment.class.getName())
