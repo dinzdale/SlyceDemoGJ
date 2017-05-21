@@ -1,7 +1,6 @@
 package com.sample.garyjacobs.slycedemogj;
 
 import android.app.Fragment;
-import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.LinearLayoutCompat;

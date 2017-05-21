@@ -44,6 +44,7 @@ public class ProductListAdapter extends RecyclerView.Adapter<ListViewHolder> {
         Picasso.with(holder.product_name.getContext())
                 .load(product.getProductImageURL())
                 .placeholder(R.drawable.placeholder_slyce)
+                .error(R.drawable.placeholder_slyce)
                 .into(holder.product_image);
     }
 

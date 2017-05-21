@@ -61,7 +61,6 @@ public class CameraActivity extends AppCompatActivity implements OnSlyceCameraFr
         getFragmentManager()
                 .beginTransaction()
                 .replace(R.id.fragment_container,ResultsFragment.getInstance(jsonObject.toString()))
-                .setCustomAnimations(android.R.animator.fade_in,android.R.animator.fade_out)
                 .addToBackStack(ResultsFragment.class.getName())
                 .commit();
 
