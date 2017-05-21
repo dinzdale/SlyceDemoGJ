@@ -40,6 +40,7 @@ public class ProductListAdapter extends RecyclerView.Adapter<ListViewHolder> {
         Product product = products.get(position);
         holder.product_name.setText(product.getProductName());
         holder.product_price.setText(product.getProductPrice());
+        holder.product_link.setText(product.getProductURL());
         Picasso.with(holder.product_name.getContext())
                 .load(product.getProductImageURL())
                 .placeholder(R.drawable.placeholder_slyce)
@@ -56,11 +57,13 @@ class ListViewHolder extends RecyclerView.ViewHolder {
     public ImageView product_image;
     public TextView product_name;
     public TextView product_price;
+    public TextView product_link;
 
     public ListViewHolder(View itemView) {
         super(itemView);
         product_name = (TextView) itemView.findViewById(R.id.product_name);
         product_price = (TextView) itemView.findViewById(R.id.product_price);
         product_image = (ImageView) itemView.findViewById(R.id.product_image);
+        product_link = (TextView) itemView.findViewById(R.id.product_link);
     }
 }
