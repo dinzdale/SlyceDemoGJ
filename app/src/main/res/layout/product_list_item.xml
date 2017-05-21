@@ -1,37 +1,51 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent" android:layout_height="wrap_content">
+<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_centerInParent="true"
+    android:layout_margin="10dp"
+    app:cardCornerRadius="20dp"
+    app:cardElevation="@dimen/slyce_dimen_25dp">
 
-    <ImageView
-        android:id="@+id/product_image"
-        android:layout_width="140dp"
-        android:layout_height="140dp" />
-
-    <View
-        android:id="@+id/view_helper"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_alignRight="@id/product_image"
-        />
-    <TextView
-        android:id="@+id/product_name"
-        android:layout_width="wrap_content"
+    <RelativeLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_toLeftOf="@id/view_helper"
-        android:textSize="12dp"
-        android:layout_marginTop="2dp"
-        android:layout_marginLeft="8dp"
-        android:maxLines="2"
-        android:layout_below="@id/product_image"/>
-    <TextView
-        android:id="@+id/product_price"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textSize="18dp"
-        android:textColor="#a90000"
-        android:layout_marginLeft="8dp"
-        android:layout_below="@id/product_name"
-        android:layout_marginTop="4dp"/>
+        android:layout_centerInParent="true">
 
 
-</RelativeLayout>
+        <ImageView
+            android:id="@+id/product_image"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_alignParentStart="true"
+            android:layout_marginLeft="5dp"/>
+
+        <TextView
+            android:id="@+id/product_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_marginLeft="5dp"
+            android:layout_toEndOf="@+id/product_image"
+            android:elevation="18dp"
+            android:ellipsize="end"
+            android:maxLines="2"
+            android:textSize="13dp"
+            android:textStyle="bold"
+            tools:text="product_name" />
+
+        <TextView
+            android:id="@+id/product_price"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/product_name"
+            android:layout_alignLeft="@id/product_name"
+            android:text="product_price"
+            android:textColor="#a90000"
+            android:textSize="12dp" />
+
+    </RelativeLayout>
+
+</android.support.v7.widget.CardView>

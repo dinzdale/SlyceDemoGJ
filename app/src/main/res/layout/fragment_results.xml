@@ -1,39 +1,48 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/top_container"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@color/slyce_color_blue"
-    android:orientation="horizontal">
+    android:layout_height="wrap_content"
+    android:background="@color/slyce_color_light_grey"
+    android:orientation="vertical">
 
-    <LinearLayout
-        android:id="@+id/top_container"
+    <RelativeLayout
+        android:id="@+id/header_layout"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="horizontal">
+        android:layout_height="wrap_content">
 
-        <FrameLayout
+
+        <TextView
+            android:id="@+id/category"
             android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:paddingLeft="@dimen/slyce_dimen_12dp"
-            android:paddingRight="@dimen/slyce_dimen_24dp">
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:text="catregory"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            android:typeface="sans"
+            android:textColor="@color/slyce_color_white"/>
 
-            <ImageView
-                android:id="@+id/source_image"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent" />
-        </FrameLayout>
 
-        <FrameLayout
-            android:id="@+id/ProductListFrame"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent">
+        <ImageView
+            android:id="@+id/source_image"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="5dp"/>
 
-            <android.support.v7.widget.RecyclerView
-                android:id="@+id/results_list"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent" />
-        </FrameLayout>
+    </RelativeLayout>
 
-    </LinearLayout>
-</FrameLayout>
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/results_list"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="@dimen/slyce_dimen_15dp"
+        android:background="@color/slyce_color_blue" />
+
+</LinearLayout>
+

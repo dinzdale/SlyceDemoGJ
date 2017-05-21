@@ -1,6 +1,7 @@
 package com.sample.garyjacobs.slycedemogj;
 
 import android.app.Fragment;
+import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.LinearLayoutCompat;
@@ -10,6 +11,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.google.gson.Gson;
 import com.sample.garyjacobs.slycedemogj.model.Category;
@@ -50,11 +52,17 @@ public class ResultsFragment extends Fragment {
         Gson gson = new Gson();
         Bundle bundle = getArguments();
         category = gson.fromJson((String) bundle.get(PRODUCT_INFO_KEY), Category.class);
+
+        recyclerView.setAdapter(new ProductListAdapter(category.getProducts()));
+
+        TextView category_tv = (TextView) view.findViewById(R.id.category);
+        category_tv.setText(category.getCategoryLabel());
+
         Picasso.with(getActivity())
                 .load(category.getImageURL())
                 .placeholder(R.drawable.placeholder_slyce)
                 .into(sourceImageView);
-        recyclerView.setAdapter(new ProductListAdapter(category.getProducts()));
+
         return view;
     }
 
@@ -63,4 +71,5 @@ public class ResultsFragment extends Fragment {
         super.onResume();
 
     }
+
 }
