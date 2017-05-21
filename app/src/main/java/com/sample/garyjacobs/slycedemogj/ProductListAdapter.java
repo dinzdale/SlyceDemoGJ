@@ -1,5 +1,6 @@
 package com.sample.garyjacobs.slycedemogj;
 
+import android.graphics.drawable.Drawable;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -41,6 +42,7 @@ public class ProductListAdapter extends RecyclerView.Adapter<ListViewHolder> {
         holder.product_price.setText(product.getProductPrice());
         Picasso.with(holder.product_name.getContext())
                 .load(product.getProductImageURL())
+                .placeholder(R.drawable.placeholder_slyce)
                 .into(holder.product_image);
     }
 

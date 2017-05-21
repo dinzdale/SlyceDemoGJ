@@ -26,13 +26,12 @@ public class ResultsFragment extends Fragment {
     private ImageView sourceImageView;
 
     private Category category;
+
     public static ResultsFragment getInstance(String args) {
-        if (resultsFragment == null) {
-            resultsFragment = new ResultsFragment();
-            Bundle bundle = new Bundle();
-            bundle.putString(PRODUCT_INFO_KEY, args);
-            resultsFragment.setArguments(bundle);
-        }
+        resultsFragment = new ResultsFragment();
+        Bundle bundle = new Bundle();
+        bundle.putString(PRODUCT_INFO_KEY, args);
+        resultsFragment.setArguments(bundle);
         return resultsFragment;
     }
 
@@ -51,7 +50,10 @@ public class ResultsFragment extends Fragment {
         Gson gson = new Gson();
         Bundle bundle = getArguments();
         category = gson.fromJson((String) bundle.get(PRODUCT_INFO_KEY), Category.class);
-        Picasso.with(getActivity()).load(category.getImageURL()).into(sourceImageView);
+        Picasso.with(getActivity())
+                .load(category.getImageURL())
+                .placeholder(R.drawable.placeholder_slyce)
+                .into(sourceImageView);
         recyclerView.setAdapter(new ProductListAdapter(category.getProducts()));
         return view;
     }
