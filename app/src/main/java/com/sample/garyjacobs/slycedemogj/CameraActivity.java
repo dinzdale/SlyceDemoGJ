@@ -28,7 +28,8 @@ public class CameraActivity extends AppCompatActivity implements OnSlyceCameraFr
         getFragmentManager()
                 .beginTransaction()
                 .replace(R.id.fragment_container, slyceCameraFragment)
-                .setCustomAnimations(android.R.animator.fade_in,android.R.animator.fade_out)
+                .addToBackStack(SlyceCameraFragment.class.getName())
+                .setCustomAnimations(android.R.animator.fade_in, android.R.animator.fade_out)
                 .commit();
 
     }
@@ -60,7 +61,7 @@ public class CameraActivity extends AppCompatActivity implements OnSlyceCameraFr
         // Load results fragment
         getFragmentManager()
                 .beginTransaction()
-                .replace(R.id.fragment_container,ResultsFragment.getInstance(jsonObject.toString()))
+                .replace(R.id.fragment_container, ResultsFragment.getInstance(jsonObject.toString()))
                 .addToBackStack(ResultsFragment.class.getName())
                 .commit();
 
@@ -91,5 +92,14 @@ public class CameraActivity extends AppCompatActivity implements OnSlyceCameraFr
     public void onCameraFragmentBarcodeInfoReceived(JSONObject jsonObject) {
         Toast.makeText(this, "onCameraFragmentBarcodeInfoReceived", Toast.LENGTH_LONG).show();
 
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        int count = getFragmentManager().getBackStackEntryCount();
+        if (count == 0) {
+            super.onBackPressed();
+        }
     }
 }
