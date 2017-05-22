@@ -13,6 +13,7 @@ import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
+import android.view.ViewPropertyAnimator;
 import android.widget.Button;
 import android.widget.TextView;
 
@@ -84,8 +85,7 @@ public class MainActivity extends AppCompatActivity {
                                 .show();
                     }
                 });
-            }
-            else {
+            } else {
                 // Go to Camera activity
                 Intent intent = new Intent(MainActivity.this, CameraActivity.class);
                 MainActivity.this.startActivity(intent);
@@ -115,6 +115,8 @@ public class MainActivity extends AppCompatActivity {
 
     private void doIntroAnimation() {
 
+        openButton.setVisibility(View.INVISIBLE);
+
         slyceDemo.setScaleX(0.0f);
         slyceDemo.setScaleY(0.0f);
 
@@ -123,35 +125,28 @@ public class MainActivity extends AppCompatActivity {
         slyceDemo.animate()
                 .scaleX(1.0f)
                 .scaleY(1.0f)
-                .setStartDelay(2000)
-                .setDuration(3000)
-                .setListener(new Animator.AnimatorListener() {
+                .setStartDelay(1000)
+                .setDuration(2000)
+                .withEndAction(new Runnable() {
                     @Override
-                    public void onAnimationStart(Animator animation) {
-
-                    }
-
-                    @Override
-                    public void onAnimationEnd(Animator animation) {
+                    public void run() {
                         garyJacobs.animate()
                                 .alpha(1.0f)
                                 .setDuration(3000)
+                                .withEndAction(new Runnable() {
+                                    @Override
+                                    public void run() {
+                                        openButton.setVisibility(View.VISIBLE);
+                                        openButton.animate()
+                                                .rotation(360 * 4)
+                                                .setDuration(1000)
+                                                .start();
+                                    }
+                                })
                                 .start();
-                    }
-
-                    @Override
-                    public void onAnimationCancel(Animator animation) {
-
-                    }
-
-                    @Override
-                    public void onAnimationRepeat(Animator animation) {
-
                     }
                 })
                 .start();
-
-
     }
 
 }
