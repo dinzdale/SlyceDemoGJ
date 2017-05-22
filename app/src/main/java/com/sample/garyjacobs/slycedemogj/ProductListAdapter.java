@@ -41,11 +41,17 @@ public class ProductListAdapter extends RecyclerView.Adapter<ListViewHolder> {
         holder.product_name.setText(product.getProductName());
         holder.product_price.setText(product.getProductPrice());
         holder.product_link.setText(product.getProductURL());
-        Picasso.with(holder.product_name.getContext())
-                .load(product.getProductImageURL())
-                .placeholder(R.drawable.placeholder_slyce)
-                .error(R.drawable.placeholder_slyce)
-                .into(holder.product_image);
+        try {
+            Picasso.with(holder.product_name.getContext())
+                    .load(product.getProductImageURL())
+                    .placeholder(R.drawable.placeholder_slyce)
+                    .error(R.drawable.placeholder_slyce)
+                    .into(holder.product_image);
+        }
+        catch (IllegalArgumentException iae) {
+            // sometimes image url is empty ... check ?
+            iae.printStackTrace();
+        }
     }
 
     @Override

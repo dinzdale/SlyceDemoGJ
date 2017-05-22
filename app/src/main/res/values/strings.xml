@@ -3,6 +3,14 @@
     <string name="client_id">SWgIye13805</string>
     <string name="title_activity_main">SlyceDemoGJ</string>
 
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <!--Alert Dialog Messages-->
+    <string name="open_success">Slyce Open Success!!</string>
+    <string name="open_failed">Slyce Open Failed!!</string>
+    <string name="open_status">"Premium: %1$b\n2D Search: %2$b"</string>
+
+    <!--Button Labels-->
+    <string name="ok_button_label">OK</string>
+    <string name="exit_button_label">Exit</string>
+
+
 </resources>

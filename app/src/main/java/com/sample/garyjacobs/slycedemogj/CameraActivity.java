@@ -33,7 +33,10 @@ public class CameraActivity extends AppCompatActivity implements OnSlyceCameraFr
                 .commit();
 
     }
+
+
     // OnSlyceCameraFragmentListener
+    // ...most of these methods are not required to be implemented.
 
     @Override
     public void onCameraFragmentBarcodeDetected(SlyceBarcode slyceBarcode) {
@@ -55,6 +58,7 @@ public class CameraActivity extends AppCompatActivity implements OnSlyceCameraFr
 
     }
 
+    // Received Product data, load Results fragments and pass data as a string
     @Override
     public void onCameraFragmentResultsReceived(JSONObject jsonObject) {
 
@@ -94,11 +98,13 @@ public class CameraActivity extends AppCompatActivity implements OnSlyceCameraFr
 
     }
 
+    // Force move to MainActivity when done backing out of fragments
     @Override
     public void onBackPressed() {
         super.onBackPressed();
         int count = getFragmentManager().getBackStackEntryCount();
         if (count == 0) {
+            // go back to MainActivity from here
             super.onBackPressed();
         }
     }

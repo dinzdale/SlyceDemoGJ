@@ -2,7 +2,6 @@ package com.sample.garyjacobs.slycedemogj;
 
 import android.app.Fragment;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
 import android.support.v7.widget.LinearLayoutCompat;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -21,24 +20,32 @@ import com.squareup.picasso.Picasso;
  */
 
 public class ResultsFragment extends Fragment {
+
     private static final String PRODUCT_INFO_KEY = "PRODUCT_INFO_KEY";
-    private static ResultsFragment resultsFragment;
+    private static  ResultsFragment resultsFragment;
+
+
     private RecyclerView recyclerView;
     private ImageView sourceImageView;
 
     private Category category;
 
     public static ResultsFragment getInstance(String args) {
+        // Create ResultsFragment
         resultsFragment = new ResultsFragment();
+
+        // Load it's arguments (Category/Product data string)
         Bundle bundle = new Bundle();
         bundle.putString(PRODUCT_INFO_KEY, args);
         resultsFragment.setArguments(bundle);
+
+        // Return created fragment
         return resultsFragment;
     }
 
-    @Nullable
     @Override
-    public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        // Get the results view
         View view = inflater.inflate(R.layout.fragment_results, null);
 
         sourceImageView = (ImageView) view.findViewById(R.id.source_image);
@@ -48,27 +55,25 @@ public class ResultsFragment extends Fragment {
         linearLayoutManager.setOrientation(LinearLayoutCompat.VERTICAL);
         recyclerView.setLayoutManager(linearLayoutManager);
 
+        // Convert data string to POJO objects
         Gson gson = new Gson();
         Bundle bundle = getArguments();
         category = gson.fromJson((String) bundle.get(PRODUCT_INFO_KEY), Category.class);
 
+        // Set list adapter
         recyclerView.setAdapter(new ProductListAdapter(category.getProducts()));
 
+        // Set header category label
         TextView category_tv = (TextView) view.findViewById(R.id.category);
         category_tv.setText(category.getCategoryLabel());
 
+        // Fetch user snapshot
         Picasso.with(getActivity())
                 .load(category.getImageURL())
                 .placeholder(R.drawable.placeholder_slyce)
                 .into(sourceImageView);
 
         return view;
-    }
-
-    @Override
-    public void onResume() {
-        super.onResume();
-
     }
 
 }

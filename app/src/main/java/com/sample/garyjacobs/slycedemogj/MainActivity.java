@@ -34,11 +34,14 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         setContentView(R.layout.activity_main);
 
+        // Slyce open
         openButton = (Button) findViewById(R.id.open_button);
         openButton.setOnClickListener(openButtonListener);
 
+        // Intro Animation text
         slyceDemo = (TextView) findViewById(R.id.slyce_demo);
         garyJacobs = (TextView) findViewById(R.id.by_gary_jacobs);
 
@@ -57,10 +60,9 @@ public class MainActivity extends AppCompatActivity {
                     @Override
                     public void onOpenSuccess() {
                         new AlertDialog.Builder(MainActivity.this)
-                                .setTitle("Slyce Open Success")
-                                .setMessage("Premium: " + slyce.isPremiumUser() + "\n" +
-                                        "2D Search: " + slyce.is2DSearchEnabled())
-                                .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                                .setTitle(R.string.open_success)
+                                .setMessage(getString(R.string.open_status,slyce.isPremiumUser(),slyce.is2DSearchEnabled()))
+                                .setPositiveButton(getString(R.string.ok_button_label), new DialogInterface.OnClickListener() {
                                     @Override
                                     public void onClick(DialogInterface dialog, int which) {
                                         Intent intent = new Intent(MainActivity.this, CameraActivity.class);
@@ -74,9 +76,9 @@ public class MainActivity extends AppCompatActivity {
                     @Override
                     public void onOpenFail(String s) {
                         new AlertDialog.Builder(MainActivity.this)
-                                .setMessage("Slyce Open Failed")
-                                .setPositiveButton("OK", null)
-                                .setNegativeButton("EXIT", new DialogInterface.OnClickListener() {
+                                .setMessage(R.string.open_failed)
+                                .setPositiveButton(getString(R.string.ok_button_label), null)
+                                .setNegativeButton(getString(R.string.exit_button_label), new DialogInterface.OnClickListener() {
                                     @Override
                                     public void onClick(DialogInterface dialog, int which) {
                                         MainActivity.this.finish();
@@ -113,6 +115,9 @@ public class MainActivity extends AppCompatActivity {
         slyce = null;
     }
 
+    /**
+     * Intro Animation
+     */
     private void doIntroAnimation() {
 
         openButton.setVisibility(View.INVISIBLE);
