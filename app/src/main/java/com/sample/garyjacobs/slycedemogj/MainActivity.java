@@ -130,14 +130,13 @@ public class MainActivity extends AppCompatActivity {
         slyceDemo.animate()
                 .scaleX(1.0f)
                 .scaleY(1.0f)
-                .setStartDelay(1000)
-                .setDuration(2000)
+                .setDuration(1000)
                 .withEndAction(new Runnable() {
                     @Override
                     public void run() {
                         garyJacobs.animate()
                                 .alpha(1.0f)
-                                .setDuration(3000)
+                                .setDuration(2000)
                                 .withEndAction(new Runnable() {
                                     @Override
                                     public void run() {

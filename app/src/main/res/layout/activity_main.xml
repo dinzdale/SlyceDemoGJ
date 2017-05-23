@@ -11,7 +11,7 @@
        android:id="@+id/slyce_demo"
        android:layout_alignParentTop="true"
        android:layout_centerHorizontal="true"
-       android:layout_marginTop="100dp"
+       android:layout_marginTop="25dp"
        android:textSize="50dp"
        android:text="Slyce Demo"/>
 
@@ -24,6 +24,14 @@
         android:layout_marginTop="10dp"
         android:textSize="30dp"
         android:text="by Gary Jacobs"/>
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/magician"
+        android:src="@drawable/magician"
+        android:layout_below="@id/by_gary_jacobs"
+        android:layout_centerHorizontal="true"
+        />
 
     <Button
         android:id="@+id/open_button"
